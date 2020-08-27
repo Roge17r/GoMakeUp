@@ -1,13 +1,5 @@
 import { uuid } from 'uuidv4';
 
-interface Services {
-  Hair: string;
-
-  Facial: string;
-
-  MakeUp: string;
-}
-
 class Appointment {
   id: string;
 
@@ -15,13 +7,13 @@ class Appointment {
 
   date: Date;
 
-  services: Services;
+  service: string;
 
-  constructor(provider: string, date: Date, services: Services) {
+  constructor({ provider, date, service }: Omit<Appointment, 'id'>) {
     this.id = uuid();
     this.provider = provider;
     this.date = date;
-    this.services = services;
+    this.service = service;
   }
 }
 
