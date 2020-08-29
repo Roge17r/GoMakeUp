@@ -23,6 +23,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "class-methods-use-this":"off",
       "prettier/prettier": "error",
       "camelcase":"off",
       "import/extensions": [
