@@ -1,6 +1,4 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { type } from 'os';
-import { isPrimitive } from 'util';
 
 export default class CreateUsers1598923204969 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -10,7 +8,7 @@ export default class CreateUsers1598923204969 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
@@ -43,5 +41,7 @@ export default class CreateUsers1598923204969 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('users');
+  }
 }

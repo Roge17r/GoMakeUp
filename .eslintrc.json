@@ -23,6 +23,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "no-shadow":"off",
       "class-methods-use-this":"off",
       "prettier/prettier": "error",
       "camelcase":"off",
