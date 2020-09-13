@@ -1,4 +1,4 @@
-import { Router, request } from 'express';
+import { Router } from 'express';
 import CreateUserService from '../services/CreateUserService';
 import DeleteUserService from '../services/DeleteUserService';
 
@@ -20,13 +20,13 @@ usersRouter.post('/', async (request, response) => {
   }
 });
 
-usersRouter.delete('/delete/:id', async (request, response) => {
+usersRouter.delete('/delete', async (request, response) => {
   try {
-    const { id } = request.params;
+    const { email } = request.body;
 
     const deleteUser = new DeleteUserService();
 
-    await deleteUser.execute({ id });
+    await deleteUser.execute({ email });
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
