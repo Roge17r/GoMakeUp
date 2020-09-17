@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import User from '../models/Users';
+import AppError from '../errors/AppError';
 
 interface RequestDTO {
   email: string;
@@ -13,7 +14,7 @@ class DeleteUserService {
     });
 
     if (!checkUserExists) {
-      throw new Error('User do not exists.');
+      throw new AppError('User do not exists.');
     }
 
     await usersRepository.delete({ email });
